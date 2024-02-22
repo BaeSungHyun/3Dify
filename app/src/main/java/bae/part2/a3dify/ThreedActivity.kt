@@ -5,6 +5,8 @@ import android.annotation.SuppressLint
 import android.opengl.GLSurfaceView
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import bae.part2.a3dify.databinding.ActivityThreedBinding
@@ -29,8 +31,14 @@ class ThreedActivity : AppCompatActivity() {
         binding.openglView.setRenderer(renderer)
         binding.openglView.renderMode = GLSurfaceView.RENDERMODE_WHEN_DIRTY // only when there is change
 
-        binding.openglView.setOnTouchListener { view, motionEvent ->
+        binding.openglView.setOnTouchListener { _, motionEvent ->
             // C++ code
+            when (motionEvent.action) {
+                MotionEvent.ACTION_MOVE -> {
+                    // ui thread..?
+                    Log.d("position", "${motionEvent.x} - ${motionEvent.y}")
+                }
+            }
             return@setOnTouchListener true
         }
     }
