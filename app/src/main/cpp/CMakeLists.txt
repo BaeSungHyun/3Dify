@@ -19,6 +19,11 @@ project("a3dify")
 # In this top level CMakeLists.txt, ${CMAKE_PROJECT_NAME} is used to define
 # the target library name; in the sub-module's CMakeLists.txt, ${PROJECT_NAME}
 # is preferred for the same purpose.
+
+if (${ANDROID_PLATFORM_LEVEL} GREATER_EQUAL 18)
+    set(OPENGL_LIB GLESv3)
+endif(${ANDROID_PLATFORM_LEVEL} GREATER_EQUAL 18)
+
 #
 # In order to load a library into your app from Java/Kotlin, you must call
 # System.loadLibrary() and pass the name of the library defined here;
@@ -26,12 +31,20 @@ project("a3dify")
 # used in the AndroidManifest.xml file.
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
-        native-lib.cpp)
+        native-lib.cpp
+        RendererES3.cpp
+        gles3jni.h
+        gles3jni.cpp
+        )
 
 # Specifies libraries CMake should link to your target library. You
 # can link libraries from various origins, such as libraries defined in this
 # build script, prebuilt third-party libraries, or Android system libraries.
 target_link_libraries(${CMAKE_PROJECT_NAME}
         # List libraries link to the target library
+        ${OPENGL_LIB}
         android
-        log)
+        log
+        EGL
+        m
+        )

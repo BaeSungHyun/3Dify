@@ -7,39 +7,19 @@
     tools:context=".ThreedActivity"
     >
 
-    <FrameLayout
+    <bae.part2.a3dify.SquareView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_opengl"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.opengl.GLSurfaceView
             android:id="@+id/opengl_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-    </FrameLayout>
+    </bae.part2.a3dify.SquareView>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.6"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="I am the Sexy"
-        android:textColor="@color/white"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
