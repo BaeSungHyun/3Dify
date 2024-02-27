@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">3Dify</string>
+    <string name="secret_login_info">secret_login_info</string>
 </resources>
