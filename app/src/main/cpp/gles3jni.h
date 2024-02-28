@@ -8,11 +8,7 @@
 #include <android/log.h>
 #include <math.h>
 
-#if __ANDROID_API__ >= 24
-#include <GLES3/gl32.h>
-#else
-#include <GLES3/gl31.h>
-#endif
+#include "include_gl.h"
 
 #define DEBUG 1
 

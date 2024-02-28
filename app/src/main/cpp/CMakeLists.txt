@@ -31,10 +31,11 @@ endif(${ANDROID_PLATFORM_LEVEL} GREATER_EQUAL 18)
 # used in the AndroidManifest.xml file.
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
+        extern_functions.cpp
         native-lib.cpp
         RendererES3.cpp
-        gles3jni.h
         gles3jni.cpp
+        shader.cpp
         )
 
 # Specifies libraries CMake should link to your target library. You
