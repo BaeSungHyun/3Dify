@@ -1,12 +1,13 @@
-package bae.part2.a3dify
-import android.app.Application
+package bae.part2.a3dify.app_lifecycle
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 
 class LoginEncryptSharedPreference(context : Context) {
+    // MasterKey in the AndroidX Security library.
+    // Same key is used if already exists for configuration.
     private val masterKey : String = MasterKeys.getOrCreate(
-        MasterKeys.AES256_GCM_SPEC
+        MasterKeys.AES256_GCM_SPEC // Android Keystore. Encrypt files.
     )
 
     private val loginEncryptSharedPreference = EncryptedSharedPreferences.create(

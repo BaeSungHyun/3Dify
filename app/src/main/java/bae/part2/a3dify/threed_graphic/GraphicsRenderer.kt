@@ -1,9 +1,9 @@
+package bae.part2.a3dify.threed_graphic
+
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
-import android.opengl.GLES32
 import android.opengl.GLSurfaceView
-import bae.part2.a3dify.GraphicsLib
 
 class GraphicsRenderer : GLSurfaceView.Renderer {
     val TAG: String = "GLES3JNI"

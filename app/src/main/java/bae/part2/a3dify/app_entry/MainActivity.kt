@@ -1,11 +1,10 @@
-package bae.part2.a3dify
+package bae.part2.a3dify.app_entry
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import bae.part2.a3dify.R
 import bae.part2.a3dify.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) { // to ensure that the fragment is added only once
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<LoginFragment>(R.id.fragment)
+                add<InitialFragment>(R.id.fragment)
             }
         }
     }

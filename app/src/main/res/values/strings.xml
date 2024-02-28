@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">3Dify</string>
     <string name="secret_login_info">secret_login_info</string>
+    <string name="non_member">Non-Member</string>
+    <string name="member">Member</string>
+    <string name="password">Password</string>
+    <string name="username">ID</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="threed">3D Workspace</string>
+    <string name="gallery">Gallery</string>
 </resources>
