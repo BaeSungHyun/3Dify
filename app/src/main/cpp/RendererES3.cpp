@@ -3,7 +3,7 @@
 //
 
 #include <EGL/egl.h>
-#include "gles3jni.h"
+#include "Renderer.h"
 #include "ShaderSourceCode.h"
 
 
@@ -43,5 +43,6 @@ RendererES3::~RendererES3() {
    * If the context exists, it must be current. This only happens when we're
    * cleaning up after a failed init().
    */
+    shaderProgram.~Shader();
     if (eglGetCurrentContext() != mEglContext) return;
 }

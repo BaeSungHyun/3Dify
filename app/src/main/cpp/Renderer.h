@@ -2,8 +2,8 @@
 // Created by TFG5576XG on 2024-02-22.
 //
 
-#ifndef INC_3DIFY_GLES3JNI_H
-#define INC_3DIFY_GLES3JNI_H
+#ifndef INC_3DIFY_RENDERER_H
+#define INC_3DIFY_RENDERER_H
 
 #include <math.h>
 
@@ -30,4 +30,4 @@ private:
 
 extern Renderer* createES3Renderer();
 
-#endif //INC_3DIFY_GLES3JNI_H
+#endif //INC_3DIFY_RENDERER_H

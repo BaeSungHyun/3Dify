@@ -34,7 +34,7 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
         extern_functions.cpp
         native-lib.cpp
         RendererES3.cpp
-        gles3jni.cpp
+        Renderer.cpp
         shader.cpp
         )
 

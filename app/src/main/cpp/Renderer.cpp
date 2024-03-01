@@ -2,7 +2,7 @@
 // Created by TFG5576XG on 2024-02-23.
 //
 
-#include "gles3jni.h"
+#include "Renderer.h"
 #include <jni.h>
 
 
@@ -30,5 +30,7 @@ void Renderer::render() {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     checkGLError("Renderer::render");
+
+
 }
 

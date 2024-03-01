@@ -43,7 +43,7 @@ internal fun MainFragment.showPermissionInfoDialog() {
             setNegativeButton("Cancel") { dialogInterface, _ ->
                 dialogInterface.dismiss()
             }
-            setPositiveButton("Agree") { dialogInterface, which ->
+            setPositiveButton("Ok") { dialogInterface, which ->
                 dialogInterface.dismiss()
 
                 if (which == DialogInterface.BUTTON_POSITIVE) {
@@ -55,12 +55,5 @@ internal fun MainFragment.showPermissionInfoDialog() {
 }
 
 internal fun MainFragment.requestReadExternalStorage() {
-    registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-        isGranted : Boolean ->
-        if (isGranted) {
-            Toast.makeText(context, "Available to use Camera.", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(context, "Camera not available.", Toast.LENGTH_SHORT).show()
-        }
-    }.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+    requestReadExternalStorageLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
 }
