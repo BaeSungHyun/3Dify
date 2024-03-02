@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.add
+import androidx.fragment.app.replace
 import bae.part2.a3dify.R
 import bae.part2.a3dify.databinding.FragmentInitialBinding
 
@@ -18,19 +19,21 @@ class InitialFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentInitialBinding.inflate(layoutInflater)
+        binding = FragmentInitialBinding.inflate(inflater)
 
         binding.nonMember.setOnClickListener {
             parentFragmentManager.commit {
+                replace<MainFragment>(R.id.fragment)
                 setReorderingAllowed(true)
-                add<MainFragment>(R.id.fragment)
+                addToBackStack(null)
             }
         }
 
         binding.member.setOnClickListener {
             parentFragmentManager.commit {
+                replace<LoginFragment>(R.id.fragment)
                 setReorderingAllowed(true)
-                add<LoginFragment>(R.id.fragment)
+                addToBackStack(null)
             }
         }
 
