@@ -7,7 +7,7 @@
     tools:context=".threed_graphic.ThreedActivity"
     >
 
-    <bae.part2.a3dify.threed_graphic.SquareView
+    <com.part2.a3dify.threed_graphic.SquareView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_opengl"
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-    </bae.part2.a3dify.threed_graphic.SquareView>
+    </com.part2.a3dify.threed_graphic.SquareView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package bae.part2.a3dify.threed_graphic
+package com.part2.a3dify.threed_graphic
 
 public class GraphicsLib {
     external fun stringFromJNI(): String

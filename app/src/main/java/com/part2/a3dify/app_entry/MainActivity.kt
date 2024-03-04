@@ -1,14 +1,13 @@
-package bae.part2.a3dify.app_entry
+package com.part2.a3dify.app_entry
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import bae.part2.a3dify.R
-import bae.part2.a3dify.databinding.ActivityMainBinding
-import com.google.android.material.appbar.MaterialToolbar
+import com.part2.a3dify.R
+import com.part2.a3dify.databinding.ActivityMainBinding
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         // val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
         // setSupportActionBar(toolbar)
         // How to set supportActionBar
+//
+        Log.d("Cache Directory", baseContext.filesDir.toString())
 
         if (savedInstanceState == null) { // to ensure that the fragment is added only once
             supportFragmentManager.commit {

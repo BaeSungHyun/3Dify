@@ -9,11 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/black"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintDimensionRatio="1.0"
-
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

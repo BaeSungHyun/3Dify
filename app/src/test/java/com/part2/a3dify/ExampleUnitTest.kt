@@ -1,4 +1,4 @@
-package bae.part2.a3dify
+package com.part2.a3dify
 
 import org.junit.Test
 

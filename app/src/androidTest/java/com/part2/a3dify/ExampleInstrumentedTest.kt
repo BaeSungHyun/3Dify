@@ -1,4 +1,4 @@
-package bae.part2.a3dify
+package com.part2.a3dify
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

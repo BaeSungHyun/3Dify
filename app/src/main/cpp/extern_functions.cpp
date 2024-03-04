@@ -13,12 +13,12 @@ static Renderer* g_renderer = NULL;
 unsigned int Shader::total = 0;
 
 extern "C" {
-JNIEXPORT void JNICALL Java_bae_part2_a3dify_threed_1graphic_GraphicsLib_init(JNIEnv* env, jobject obj);
-JNIEXPORT void JNICALL Java_bae_part2_a3dify_threed_1graphic_GraphicsLib_resize(JNIEnv* env, jobject obj, jint width, jint height);
-JNIEXPORT void JNICALL Java_bae_part2_a3dify_threed_1graphic_GraphicsLib_step(JNIEnv* env, jobject obj);
+JNIEXPORT void JNICALL Java_com_part2_a3dify_threed_1graphic_GraphicsLib_init(JNIEnv* env, jobject obj);
+JNIEXPORT void JNICALL Java_com_part2_a3dify_threed_1graphic_GraphicsLib_resize(JNIEnv* env, jobject obj, jint width, jint height);
+JNIEXPORT void JNICALL Java_com_part2_a3dify_threed_1graphic_GraphicsLib_step(JNIEnv* env, jobject obj);
 };
 
-extern "C" JNIEXPORT void JNICALL Java_bae_part2_a3dify_threed_1graphic_GraphicsLib_init(JNIEnv* env, jobject obj) {
+extern "C" JNIEXPORT void JNICALL Java_com_part2_a3dify_threed_1graphic_GraphicsLib_init(JNIEnv* env, jobject obj) {
     if (g_renderer) {
         delete g_renderer;
         g_renderer = NULL;
@@ -37,13 +37,13 @@ extern "C" JNIEXPORT void JNICALL Java_bae_part2_a3dify_threed_1graphic_Graphics
     }
 }
 
-extern "C" JNIEXPORT void JNICALL Java_bae_part2_a3dify_threed_1graphic_GraphicsLib_resize(JNIEnv* env, jobject obj, jint width, jint height) {
+extern "C" JNIEXPORT void JNICALL Java_com_part2_a3dify_threed_1graphic_GraphicsLib_resize(JNIEnv* env, jobject obj, jint width, jint height) {
     if (g_renderer) {
         g_renderer->resize(width, height);
     }
 }
 
-extern "C" JNIEXPORT void JNICALL Java_bae_part2_a3dify_threed_1graphic_GraphicsLib_step(JNIEnv* env, jobject obj) {
+extern "C" JNIEXPORT void JNICALL Java_com_part2_a3dify_threed_1graphic_GraphicsLib_step(JNIEnv* env, jobject obj) {
     if (g_renderer) {
         g_renderer->render();
     }

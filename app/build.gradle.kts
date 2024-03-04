@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "bae.part2.a3dify"
+    namespace = "com.part2.a3dify"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "bae.part2.a3dify"
+        applicationId = "com.part2.a3dify"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

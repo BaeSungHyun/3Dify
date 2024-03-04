@@ -1,4 +1,4 @@
-package bae.part2.a3dify.threed_graphic
+package com.part2.a3dify.threed_graphic
 
 import android.annotation.SuppressLint
 import android.opengl.GLSurfaceView
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
-import bae.part2.a3dify.databinding.ActivityThreedBinding
+import com.part2.a3dify.databinding.ActivityThreedBinding
 
 class ThreedActivity : AppCompatActivity() {
     private lateinit var binding : ActivityThreedBinding

@@ -1,4 +1,4 @@
-package bae.part2.a3dify.app_entry
+package com.part2.a3dify.app_entry
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.fragment.app.add
 import androidx.fragment.app.replace
-import bae.part2.a3dify.R
-import bae.part2.a3dify.databinding.FragmentInitialBinding
+import com.part2.a3dify.R
+import com.part2.a3dify.databinding.FragmentInitialBinding
 
 class InitialFragment : Fragment() {
     private lateinit var binding : FragmentInitialBinding

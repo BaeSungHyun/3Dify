@@ -1,11 +1,11 @@
-package bae.part2.a3dify.app_entry
+package com.part2.a3dify.app_entry
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import bae.part2.a3dify.databinding.FragmentLoginBinding
+import com.part2.a3dify.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
     private lateinit var binding : FragmentLoginBinding
@@ -14,7 +14,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentLoginBinding.inflate(inflater)
 
         return binding.root

@@ -1,10 +1,7 @@
-package bae.part2.a3dify.app_entry
+package com.part2.a3dify.app_entry
 
 import android.content.DialogInterface
 import android.content.pm.PackageManager
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 

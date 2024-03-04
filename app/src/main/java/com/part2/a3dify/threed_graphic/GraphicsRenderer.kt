@@ -1,4 +1,4 @@
-package bae.part2.a3dify.threed_graphic
+package com.part2.a3dify.threed_graphic
 
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
