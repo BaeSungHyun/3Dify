@@ -81,6 +81,23 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d("MainFragment", "OnViewCreated")
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        Log.d("MainFragment", "OnViewStateRestored")
+    }
+
+    // Coming back from Gallery invokes this method. -- meaning
+    // Coroutine repeatOnLifecycle(Start) should be called. Or Resumed?
+    override fun onStart() {
+        super.onStart()
+        Log.d("MainFragment", "OnStart")
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
     }
