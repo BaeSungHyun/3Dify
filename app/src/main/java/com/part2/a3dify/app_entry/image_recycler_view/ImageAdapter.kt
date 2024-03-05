@@ -32,7 +32,7 @@ class ImageAdapter(private val context: Context) : RecyclerView.Adapter<ImageVie
 
     fun changeImageGroup(_imagesGroup : List<ImageDataClass>) {
         imagesGroup = _imagesGroup
-        asyncDiffer.submitList(imagesGroup)
+        asyncDiffer.submitList(imagesGroup) // on background thread
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {

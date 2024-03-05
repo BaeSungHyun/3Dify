@@ -1,4 +1,4 @@
-package com.part2.a3dify.app_lifecycle
+package com.part2.a3dify.local_db
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys

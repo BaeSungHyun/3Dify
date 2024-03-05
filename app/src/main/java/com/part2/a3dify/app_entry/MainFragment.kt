@@ -15,36 +15,39 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
+import com.part2.a3dify.app_containers.MainContainer
+import com.part2.a3dify.app_containers.MainFragmentContainer
+import com.part2.a3dify.app_containers.ThrDifyApplication
 import com.part2.a3dify.app_entry.image_recycler_view.ImageAdapter
 import com.part2.a3dify.app_entry.image_recycler_view.ImageDataClass
+import com.part2.a3dify.app_entry.viewmodels.MainFragmentViewModel
 import com.part2.a3dify.databinding.FragmentMainBinding
 import com.part2.a3dify.threed_graphic.ThreedActivity
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
     private lateinit var binding : FragmentMainBinding
-    private lateinit var imageAdapter: ImageAdapter
+    private lateinit var imageAdapter : ImageAdapter
+    private val viewModel : MainFragmentViewModel by viewModels {
+        var temp : MainFragmentContainer? = (requireActivity().application as ThrDifyApplication).mainContainer.mainFragmentContainer
+        if (temp == null) {
+            temp = MainFragmentContainer()
+            return@viewModels temp.mainFragmentViewModelFactory
+        }
+        else
+            return@viewModels temp.mainFragmentViewModelFactory
+    }
 
     private val imageLoadLauncher = registerForActivityResult(ActivityResultContracts.GetMultipleContents()) {
         uriList ->  // List<Uri>!
-        updateImages(uriList)
+        viewModel.updateRecyclerImages(uriList)
         // Currently from Gallery, but in future it will get images (history) from backend
-    }
-
-    private fun updateImages(uriList : List<Uri>) {
-        val images = uriList.map{ImageDataClass(
-            it,
-            configureBitmap(it)
-            )}
-        imageAdapter.changeImageGroup(images)
-    }
-
-    private fun configureBitmap(uri: Uri): Bitmap {
-        var bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
-        val matrix = Matrix()
-        matrix.postRotate(90.0f)
-        bitmap = Bitmap.createScaledBitmap(bitmap, 1000, 1000, true)
-        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
     }
 
     internal val requestReadExternalStorageLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
@@ -61,8 +64,9 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainBinding.inflate(inflater)
         imageAdapter = ImageAdapter(requireContext())
+
+        binding = FragmentMainBinding.inflate(inflater)
 
         binding.gallery.setOnClickListener {
             checkPermission()
@@ -76,6 +80,15 @@ class MainFragment : Fragment() {
         binding.imageRecyclerView.apply {
             adapter = imageAdapter
             layoutManager = GridLayoutManager(context, 4)
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect {
+                    if (it.uriList == null) return@collect
+                    imageAdapter.changeImageGroup(it.uriList)
+                }
+            }
         }
 
         return binding.root
@@ -98,8 +111,10 @@ class MainFragment : Fragment() {
         Log.d("MainFragment", "OnStart")
     }
 
+    // Need to check on memory when working on 3D task and delete viewModel
     override fun onDestroyView() {
         super.onDestroyView()
+        (requireActivity().application as ThrDifyApplication).mainContainer.mainFragmentContainer = null
     }
 
     internal fun loadImage() {
