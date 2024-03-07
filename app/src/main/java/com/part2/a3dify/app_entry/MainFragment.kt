@@ -68,6 +68,8 @@ class MainFragment : Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater)
 
+        binding.progressBarRecycler.hide()
+
         binding.gallery.setOnClickListener {
             checkPermission()
         }
@@ -84,9 +86,13 @@ class MainFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect {
-                    if (it.uriList == null) return@collect
-                    imageAdapter.changeImageGroup(it.uriList)
+                viewModel.uiState.collect { uiState->
+                    Log.d("coroutine", "MainFragment")
+                    if (uiState.showLoading == true) binding.progressBarRecycler.show()
+                    else binding.progressBarRecycler.hide()  // includes false, null
+
+                    if (uiState.uriList == null) return@collect
+                    imageAdapter.changeImageGroup(uiState.uriList) // only invoked when collected
                 }
             }
         }

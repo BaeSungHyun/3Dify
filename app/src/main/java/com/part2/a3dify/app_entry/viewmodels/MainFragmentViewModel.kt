@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +20,7 @@ import com.part2.a3dify.app_entry.image_recycler_view.ImageDataClass
 import com.part2.a3dify.app_entry.uistates.MainFragmentUiStates
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -49,12 +51,33 @@ class MainFragmentViewModel(private val application: Application, private val sa
         fetchJob?.cancel()
 
         fetchJob = viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                _uiState.update {
+                    Log.d("coroutine", "progressBarLoading")
+                    delay(1000)
+                    progressBarLoading()
+                }
+            }
             withContext(Dispatchers.Default) {
                _uiState.update {
+                   Log.d("coroutine", "updateImages")
                    updateImages(uriList)
                }
             }
         }
+
+        fetchJob?.invokeOnCompletion {
+            if (it == null) {  // finished completely
+                fetchJob = null
+            }
+            else {
+                Log.d("fetchJob", "Something Wrong")
+            }
+        }
+    }
+
+    private fun progressBarLoading() : MainFragmentUiStates {
+        return MainFragmentUiStates(null, true)
     }
 
     private fun updateImages(uriList: List<Uri>) : MainFragmentUiStates {
@@ -62,7 +85,7 @@ class MainFragmentViewModel(private val application: Application, private val sa
             it,
             configureBitmap(it)
         )}
-        return MainFragmentUiStates(images)
+        return MainFragmentUiStates(images, false)
     }
 
     private fun configureBitmap(uri: Uri): Bitmap {

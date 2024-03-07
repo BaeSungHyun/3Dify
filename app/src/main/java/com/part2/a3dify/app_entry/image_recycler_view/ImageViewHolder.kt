@@ -12,7 +12,7 @@ import com.part2.a3dify.databinding.ViewholderImageBinding
 // RecyclerView.ViewHolder sets data member 'itemView' to the 'binding.root'
 class ImageViewHolder(private val binding: ViewholderImageBinding, private val context: Context) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item : ImageDataClass) {
-        binding.previewImageView.setImageURI(item.uri)
+//        binding.previewImageView.setImageURI(item.uri) --- Old Way
 //        Modern Method, but not quite good for RecyclerView which doesn't have context
 //        binding.previewImageView.setImageBitmap(context.contentResolver.loadThumbnail(
 //            item.uri,
