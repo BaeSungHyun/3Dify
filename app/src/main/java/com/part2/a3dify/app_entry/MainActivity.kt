@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         // setSupportActionBar(toolbar)
         // How to set supportActionBar
 //
-        Log.d("Cache Directory", baseContext.filesDir.toString())
+//        Log.d("Cache Directory", baseContext.filesDir.toString()) /data/user/0/com.part2.a3dify/files
 
         if (savedInstanceState == null) { // to ensure that the fragment is added only once
             supportFragmentManager.commit {

@@ -15,6 +15,7 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.part2.a3dify.app_containers.ThrDifyApplication
+import com.part2.a3dify.app_entry.common.CommonViewModel
 import com.part2.a3dify.app_entry.image_recycler_view.ImageAdapter
 import com.part2.a3dify.app_entry.image_recycler_view.ImageDataClass
 import com.part2.a3dify.app_entry.uistates.MainFragmentUiStates
@@ -28,10 +29,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainFragmentViewModel(private val application: Application, private val savedStateHandle: SavedStateHandle): ViewModel() {
-    private val _uiState = MutableStateFlow(MainFragmentUiStates())
-    val uiState : StateFlow<MainFragmentUiStates> = _uiState.asStateFlow()
-
+class MainFragmentViewModel(private val application: Application, private val savedStateHandle: SavedStateHandle):
+    CommonViewModel<MainFragmentUiStates>(MainFragmentUiStates()) {
     companion object {
         val factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
@@ -44,8 +43,6 @@ class MainFragmentViewModel(private val application: Application, private val sa
             }
         }
     }
-    // checking for jobs in place
-    private var fetchJob: Job? = null
 
     fun updateRecyclerImages(uriList: List<Uri>) {
         fetchJob?.cancel()
@@ -53,14 +50,11 @@ class MainFragmentViewModel(private val application: Application, private val sa
         fetchJob = viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 _uiState.update {
-                    Log.d("coroutine", "progressBarLoading")
-                    delay(1000)
                     progressBarLoading()
                 }
             }
             withContext(Dispatchers.Default) {
                _uiState.update {
-                   Log.d("coroutine", "updateImages")
                    updateImages(uriList)
                }
             }
