@@ -4,10 +4,13 @@
     <string name="non_member">Non-Member</string>
     <string name="member">Member</string>
     <string name="password">Password</string>
+    <string name="re_password">Re-Password</string>
     <string name="username">ID</string>
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
     <string name="threed">3D Workspace</string>
     <string name="gallery">Gallery</string>
     <string name="page_title">3Dify</string>
+    <string name="email">123@email.com</string>
+    <string name="register">Sign Up</string>
 </resources>

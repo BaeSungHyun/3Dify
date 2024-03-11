@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.part2.a3dify.app_containers.ThrDifyApplication
-import com.part2.a3dify.app_entry.common.CommonViewModel
+import com.part2.a3dify.common.CommonViewModel
 import com.part2.a3dify.app_entry.uistates.LoginFragmentUiStates
 
 class LoginFragmentViewModel(private val application: Application, private val savedStateHandle: SavedStateHandle):

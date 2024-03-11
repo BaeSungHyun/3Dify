@@ -1,4 +1,4 @@
-package com.part2.a3dify.app_entry.common
+package com.part2.a3dify.common
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
