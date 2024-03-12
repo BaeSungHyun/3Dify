@@ -10,7 +10,7 @@ import com.part2.a3dify.app_containers.ThrDifyApplication
 import com.part2.a3dify.common.CommonViewModel
 import com.part2.a3dify.app_entry.uistates.LoginFragmentUiStates
 
-class LoginFragmentViewModel(private val application: Application, private val savedStateHandle: SavedStateHandle):
+class LoginFragmentViewModel(private val savedStateHandle: SavedStateHandle):
     CommonViewModel<LoginFragmentUiStates>(LoginFragmentUiStates()) {
     companion object {
         val factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
@@ -20,7 +20,7 @@ class LoginFragmentViewModel(private val application: Application, private val s
                 // Create a SavedStateHandle for this ViewModel from extras
                 val savedStateHandle = extras.createSavedStateHandle()
 
-                return LoginFragmentViewModel((application as ThrDifyApplication), savedStateHandle) as T
+                return LoginFragmentViewModel(savedStateHandle) as T
             }
         }
     }
