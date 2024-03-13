@@ -13,6 +13,7 @@ import com.part2.a3dify.app_entry.uistates.RegisterFragmentUiStates
 import com.part2.a3dify.app_entry.uistates.RegisterRequest
 import com.part2.a3dify.common.CommonViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -42,8 +43,15 @@ class RegisterFragmentViewModel(private val repository: RegisterRepository,
 
         fetchJob = viewModelScope.launch {
             withContext(Dispatchers.IO) {
+                val response = repository.registerUser(registerRequest)
                 // How to call registerUser. What to do with the return type of below method.
-                repository.registerUser(registerRequest)
+                _uiState.update {
+                    if (response.isSuccessful) {
+                        return@update RegisterFragmentUiStates(null, response.body())
+                    } else {
+                        return@update RegisterFragmentUiStates(null, null)
+                    }
+                }
             }
         }
     }
