@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.part2.a3dify">
 
     <uses-feature android:glEsVersion="0x00030002" android:required="true" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
@@ -18,13 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme._3Dify"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        >
         <activity
             android:name=".app_entry.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,9 +34,13 @@
 
         </activity>
 
-        <activity android:name=".app_entry.InitialFragment">
+<!--        <activity-->
+<!--            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"-->
+<!--            android:screenOrientation="fullSensor"-->
+<!--            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">-->
 
-        </activity>
+<!--        </activity>-->
+
     </application>
 
 </manifest>

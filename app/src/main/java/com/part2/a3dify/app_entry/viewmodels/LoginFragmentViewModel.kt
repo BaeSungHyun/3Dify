@@ -1,17 +1,16 @@
 package com.part2.a3dify.app_entry.viewmodels
 
-import android.app.Application
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.part2.a3dify.app_containers.ThrDifyApplication
 import com.part2.a3dify.common.CommonViewModel
 import com.part2.a3dify.app_entry.uistates.LoginFragmentUiStates
 
 class LoginFragmentViewModel(private val savedStateHandle: SavedStateHandle):
     CommonViewModel<LoginFragmentUiStates>(LoginFragmentUiStates()) {
+
     companion object {
         val factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {

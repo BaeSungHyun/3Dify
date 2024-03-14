@@ -2,6 +2,7 @@ package com.part2.a3dify.local_db
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.part2.a3dify.common.SECRET_USER_INFO
 
 class LoginEncryptSharedPreference(context : Context) {
     // MasterKey in the AndroidX Security library.
