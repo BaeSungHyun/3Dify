@@ -5,4 +5,5 @@
     <string name="username_error">Wrong Username</string>
     <string name="email_error">Wrong Email</string>
     <string name="password_error">Wrong Password</string>
+    <string name="server_client_id">423296288365-tnadkkvggct11g8v48jlfpp933e68dub.apps.googleusercontent.com</string>
 </resources>
